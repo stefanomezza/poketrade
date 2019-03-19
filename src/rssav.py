@@ -4,9 +4,10 @@ Created on 26/06/2011
 @author: Ritchie
 """
 
+
 class RSSav:
 
-    def __init__(self, file, repair = False):
+    def __init__(self, file, repair=False):
         self.firsttime = True
         self.version = 'Ruby/Sapphire'
         self.ok = repair
@@ -126,48 +127,48 @@ class RSSav:
         FLtable = (3876, 3968, 3968, 3968, 3776, 3968, 3968, 3968, 3968, 3968, 3968, 3968, 3968, 2000, 28, 256)
         RStable = (2192, 3968, 3968, 3968, 3136, 3968, 3968, 3968, 3968, 3968, 3968, 3968, 3968, 2000, 3968, 3968)
         self.gbuffers = ['',
-         '',
-         '',
-         '',
-         '',
-         '',
-         '',
-         '',
-         '',
-         '',
-         '',
-         '',
-         '',
-         '']
+                         '',
+                         '',
+                         '',
+                         '',
+                         '',
+                         '',
+                         '',
+                         '',
+                         '',
+                         '',
+                         '',
+                         '',
+                         '']
         self.buffers = ''
         self.gsaveid = [-1,
-         -1,
-         -1,
-         -1,
-         -1,
-         -1,
-         -1,
-         -1,
-         -1,
-         -1,
-         -1,
-         -1,
-         -1,
-         -1]
+                        -1,
+                        -1,
+                        -1,
+                        -1,
+                        -1,
+                        -1,
+                        -1,
+                        -1,
+                        -1,
+                        -1,
+                        -1,
+                        -1,
+                        -1]
         self.boffset = [-1,
-         -1,
-         -1,
-         -1,
-         -1,
-         -1,
-         -1,
-         -1,
-         -1,
-         -1,
-         -1,
-         -1,
-         -1,
-         -1]
+                        -1,
+                        -1,
+                        -1,
+                        -1,
+                        -1,
+                        -1,
+                        -1,
+                        -1,
+                        -1,
+                        -1,
+                        -1,
+                        -1,
+                        -1]
         self.ok = False
         self.rsok = True
         self.flok = False
@@ -234,7 +235,7 @@ class RSSav:
         if var == 'seconds':
             self.gbuffer = self.setbyte(17, int(value) & 255, self.gbuffer)
 
-    def setbyte(self, byte, value, string = None):
+    def setbyte(self, byte, value, string=None):
         if string == None:
             self.buffer = self.buffer[0:byte] + chr(value) + self.buffer[byte + 1:]
         else:
@@ -328,9 +329,9 @@ class RSSav:
 
     def pkm_getdata(self, pkm):
         blockpos = [(0, 0, 0, 0, 0, 0, 1, 1, 2, 3, 2, 3, 1, 1, 2, 3, 2, 3, 1, 1, 2, 3, 2, 3),
-         (1, 1, 2, 3, 2, 3, 0, 0, 0, 0, 0, 0, 2, 3, 1, 1, 3, 2, 2, 3, 1, 1, 3, 2),
-         (2, 3, 1, 1, 3, 2, 2, 3, 1, 1, 3, 2, 0, 0, 0, 0, 0, 0, 3, 2, 3, 2, 1, 1),
-         (3, 2, 3, 2, 1, 1, 3, 2, 3, 2, 1, 1, 3, 2, 3, 2, 1, 1, 0, 0, 0, 0, 0, 0)]
+                    (1, 1, 2, 3, 2, 3, 0, 0, 0, 0, 0, 0, 2, 3, 1, 1, 3, 2, 2, 3, 1, 1, 3, 2),
+                    (2, 3, 1, 1, 3, 2, 2, 3, 1, 1, 3, 2, 0, 0, 0, 0, 0, 0, 3, 2, 3, 2, 1, 1),
+                    (3, 2, 3, 2, 1, 1, 3, 2, 3, 2, 1, 1, 3, 2, 3, 2, 1, 1, 0, 0, 0, 0, 0, 0)]
         pid = ord(pkm[0]) + (ord(pkm[1]) << 8) + (ord(pkm[2]) << 16) + (ord(pkm[3]) << 24)
         tid = ord(pkm[4]) + (ord(pkm[5]) << 8) + (ord(pkm[6]) << 16) + (ord(pkm[7]) << 24)
         key = pid ^ tid
@@ -353,9 +354,9 @@ class RSSav:
 
     def pkm_setdata(self, pkm, data):
         blockpos = [(0, 0, 0, 0, 0, 0, 1, 1, 2, 3, 2, 3, 1, 1, 2, 3, 2, 3, 1, 1, 2, 3, 2, 3),
-         (1, 1, 2, 3, 2, 3, 0, 0, 0, 0, 0, 0, 2, 3, 1, 1, 3, 2, 2, 3, 1, 1, 3, 2),
-         (2, 3, 1, 1, 3, 2, 2, 3, 1, 1, 3, 2, 0, 0, 0, 0, 0, 0, 3, 2, 3, 2, 1, 1),
-         (3, 2, 3, 2, 1, 1, 3, 2, 3, 2, 1, 1, 3, 2, 3, 2, 1, 1, 0, 0, 0, 0, 0, 0)]
+                    (1, 1, 2, 3, 2, 3, 0, 0, 0, 0, 0, 0, 2, 3, 1, 1, 3, 2, 2, 3, 1, 1, 3, 2),
+                    (2, 3, 1, 1, 3, 2, 2, 3, 1, 1, 3, 2, 0, 0, 0, 0, 0, 0, 3, 2, 3, 2, 1, 1),
+                    (3, 2, 3, 2, 1, 1, 3, 2, 3, 2, 1, 1, 3, 2, 3, 2, 1, 1, 0, 0, 0, 0, 0, 0)]
         pid = ord(pkm[0]) + (ord(pkm[1]) << 8) + (ord(pkm[2]) << 16) + (ord(pkm[3]) << 24)
         tid = ord(pkm[4]) + (ord(pkm[5]) << 8) + (ord(pkm[6]) << 16) + (ord(pkm[7]) << 24)
         key = pid ^ tid
@@ -383,9 +384,9 @@ class RSSav:
 
     def pkm_sget(self, pkm, block, byte):
         blockpos = [(0, 0, 0, 0, 0, 0, 1, 1, 2, 3, 2, 3, 1, 1, 2, 3, 2, 3, 1, 1, 2, 3, 2, 3),
-         (1, 1, 2, 3, 2, 3, 0, 0, 0, 0, 0, 0, 2, 3, 1, 1, 3, 2, 2, 3, 1, 1, 3, 2),
-         (2, 3, 1, 1, 3, 2, 2, 3, 1, 1, 3, 2, 0, 0, 0, 0, 0, 0, 3, 2, 3, 2, 1, 1),
-         (3, 2, 3, 2, 1, 1, 3, 2, 3, 2, 1, 1, 3, 2, 3, 2, 1, 1, 0, 0, 0, 0, 0, 0)]
+                    (1, 1, 2, 3, 2, 3, 0, 0, 0, 0, 0, 0, 2, 3, 1, 1, 3, 2, 2, 3, 1, 1, 3, 2),
+                    (2, 3, 1, 1, 3, 2, 2, 3, 1, 1, 3, 2, 0, 0, 0, 0, 0, 0, 3, 2, 3, 2, 1, 1),
+                    (3, 2, 3, 2, 1, 1, 3, 2, 3, 2, 1, 1, 3, 2, 3, 2, 1, 1, 0, 0, 0, 0, 0, 0)]
         pid = ord(pkm[0]) + (ord(pkm[1]) << 8) + (ord(pkm[2]) << 16) + (ord(pkm[3]) << 24)
         tid = ord(pkm[4]) + (ord(pkm[5]) << 8) + (ord(pkm[6]) << 16) + (ord(pkm[7]) << 24)
         key = pid ^ tid
@@ -397,11 +398,11 @@ class RSSav:
         key = key >> byte * 8 & 255
         return enc ^ key
 
-    def pkm_sset(self, pkm, block, byte, value, sum = True):
+    def pkm_sset(self, pkm, block, byte, value, sum=True):
         blockpos = [(0, 0, 0, 0, 0, 0, 1, 1, 2, 3, 2, 3, 1, 1, 2, 3, 2, 3, 1, 1, 2, 3, 2, 3),
-         (1, 1, 2, 3, 2, 3, 0, 0, 0, 0, 0, 0, 2, 3, 1, 1, 3, 2, 2, 3, 1, 1, 3, 2),
-         (2, 3, 1, 1, 3, 2, 2, 3, 1, 1, 3, 2, 0, 0, 0, 0, 0, 0, 3, 2, 3, 2, 1, 1),
-         (3, 2, 3, 2, 1, 1, 3, 2, 3, 2, 1, 1, 3, 2, 3, 2, 1, 1, 0, 0, 0, 0, 0, 0)]
+                    (1, 1, 2, 3, 2, 3, 0, 0, 0, 0, 0, 0, 2, 3, 1, 1, 3, 2, 2, 3, 1, 1, 3, 2),
+                    (2, 3, 1, 1, 3, 2, 2, 3, 1, 1, 3, 2, 0, 0, 0, 0, 0, 0, 3, 2, 3, 2, 1, 1),
+                    (3, 2, 3, 2, 1, 1, 3, 2, 3, 2, 1, 1, 3, 2, 3, 2, 1, 1, 0, 0, 0, 0, 0, 0)]
         pid = ord(pkm[0]) + (ord(pkm[1]) << 8) + (ord(pkm[2]) << 16) + (ord(pkm[3]) << 24)
         tid = ord(pkm[4]) + (ord(pkm[5]) << 8) + (ord(pkm[6]) << 16) + (ord(pkm[7]) << 24)
         key = pid ^ tid
@@ -426,7 +427,7 @@ class RSSav:
             pkm = self.setbyte(29, sum >> 8 & 255, pkm)
         return pkm
 
-    def pkm_ssetw(self, pkm, block, byte, value, sum = True):
+    def pkm_ssetw(self, pkm, block, byte, value, sum=True):
         pkm = self.pkm_sset(pkm, block, byte, value & 255, False)
         pkm = self.pkm_sset(pkm, block, byte + 1, value >> 8 & 255, sum)
         return pkm
@@ -790,7 +791,7 @@ class RSSav:
 
         return decoded
 
-    def encode(self, string, fill = 0):
+    def encode(self, string, fill=0):
         encoded = ''
         for c in range(len(string)):
             dec = ord(string[c])

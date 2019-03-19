@@ -4,9 +4,10 @@ Created on 13/04/2011
 @author: Ritchie
 """
 
+
 class CRSav:
 
-    def __init__(self, file, repair = False):
+    def __init__(self, file, repair=False):
         self.version = 'Crystal'
         self.ok = repair
         self.repair = repair
@@ -128,7 +129,7 @@ class CRSav:
             if var == 'box%dpokemoncount' % b:
                 self.setbyte(self.boxoffset[b], int(value))
 
-    def setbyte(self, byte, value, string = None):
+    def setbyte(self, byte, value, string=None):
         if string == None:
             self.buffer = self.buffer[0:byte] + chr(value) + self.buffer[byte + 1:]
         else:
@@ -205,7 +206,8 @@ class CRSav:
             offset = 16384 + b // 7 * 8192 + 1104 * (b % 7)
             self.boxoffset[b] = offset
             for p in range(20):
-                self.pcpokemon[20 * b + p] = self.pcpkm(offset + 1 + p, offset + 662 + p * 11, offset + 882 + p * 11, offset + 22 + p * 32)
+                self.pcpokemon[20 * b + p] = self.pcpkm(offset + 1 + p, offset + 662 + p * 11, offset + 882 + p * 11,
+                                                        offset + 22 + p * 32)
 
             self.boxpokemoncount[b] = ord(self.buffer[offset])
 
@@ -218,7 +220,7 @@ class CRSav:
         offset = self.boxoffset[b]
         self.pcpkm(offset + 1 + p, offset + 662 + p * 11, offset + 882 + p * 11, offset + 22 + p * 32, pkm)
 
-    def pkm(self, off_hex, off_otname, off_name, off_data, data = None):
+    def pkm(self, off_hex, off_otname, off_name, off_data, data=None):
         if data == None:
             pkm = self.buffer[off_hex]
             pkm += self.buffer[off_otname:off_otname + 11]
@@ -230,7 +232,7 @@ class CRSav:
         self.buffer = self.buffer[0:off_name] + data[12:23] + self.buffer[off_name + 11:]
         self.buffer = self.buffer[0:off_data] + data[23:71] + self.buffer[off_data + 48:]
 
-    def pcpkm(self, off_hex, off_otname, off_name, off_data, data = None):
+    def pcpkm(self, off_hex, off_otname, off_name, off_data, data=None):
         if data == None:
             pkm = self.buffer[off_hex]
             pkm += self.buffer[off_otname:off_otname + 11]
@@ -555,7 +557,7 @@ class CRSav:
 
         return decoded
 
-    def encode(self, string, fill = 0):
+    def encode(self, string, fill=0):
         encoded = ''
         for c in range(len(string)):
             dec = ord(string[c])

@@ -4,9 +4,10 @@ Created on 06/04/2011
 @author: Ritchie
 """
 
+
 class RBSav:
 
-    def __init__(self, file, repair = False):
+    def __init__(self, file, repair=False):
         self.version = 'Red/Blue'
         self.ok = repair
         self.repair = repair
@@ -129,7 +130,7 @@ class RBSav:
             if var == 'box%dpokemoncount' % b:
                 self.setbyte(self.boxoffset[b], int(value))
 
-    def setbyte(self, byte, value, string = None):
+    def setbyte(self, byte, value, string=None):
         if string == None:
             self.buffer = self.buffer[0:byte] + chr(value) + self.buffer[byte + 1:]
         else:
@@ -208,7 +209,8 @@ class RBSav:
                 offset = 12480
             self.boxoffset[b] = offset
             for p in range(20):
-                self.pcpokemon[20 * b + p] = self.pcpkm(offset + 1 + p, offset + 682 + p * 11, offset + 902 + p * 11, offset + 22 + p * 33)
+                self.pcpokemon[20 * b + p] = self.pcpkm(offset + 1 + p, offset + 682 + p * 11, offset + 902 + p * 11,
+                                                        offset + 22 + p * 33)
 
             self.boxpokemoncount[b] = ord(self.buffer[offset])
 
@@ -221,7 +223,7 @@ class RBSav:
         offset = self.boxoffset[b]
         self.pcpkm(offset + 1 + p, offset + 682 + p * 11, offset + 902 + p * 11, offset + 22 + p * 33, pkm)
 
-    def pkm(self, off_hex, off_otname, off_name, off_data, data = None):
+    def pkm(self, off_hex, off_otname, off_name, off_data, data=None):
         if data == None:
             pkm = self.buffer[off_hex]
             pkm += self.buffer[off_otname:off_otname + 11]
@@ -233,7 +235,7 @@ class RBSav:
         self.buffer = self.buffer[0:off_name] + data[12:23] + self.buffer[off_name + 11:]
         self.buffer = self.buffer[0:off_data] + data[23:67] + self.buffer[off_data + 44:]
 
-    def pcpkm(self, off_hex, off_otname, off_name, off_data, data = None):
+    def pcpkm(self, off_hex, off_otname, off_name, off_data, data=None):
         if data == None:
             pkm = self.buffer[off_hex]
             pkm += self.buffer[off_otname:off_otname + 11]
@@ -538,7 +540,7 @@ class RBSav:
 
         return decoded
 
-    def encode(self, string, fill = 0):
+    def encode(self, string, fill=0):
         encoded = ''
         for c in range(len(string)):
             dec = ord(string[c])
